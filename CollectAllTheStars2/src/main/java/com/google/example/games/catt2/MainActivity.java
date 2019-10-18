@@ -694,15 +694,17 @@ public class MainActivity extends Activity implements
               } catch (IOException e) {
                 Log.e(TAG, "Error while reading snapshot contents: " + e.getMessage());
               }
-            }
-
-            SnapshotCoordinator.getInstance().discardAndClose(mSnapshotsClient, snapshot)
+                
+               SnapshotCoordinator.getInstance().discardAndClose(mSnapshotsClient, snapshot)
                 .addOnFailureListener(new OnFailureListener() {
                   @Override
                   public void onFailure(@NonNull Exception e) {
                     handleException(e, "There was a problem discarding the snapshot!");
                   }
-                });
+                })
+            }
+
+          
 
             if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
               mLoadingDialog.dismiss();
